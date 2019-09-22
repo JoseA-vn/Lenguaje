@@ -87,13 +87,13 @@ public class SimpleCustomVisitor extends SimpleBaseVisitor<Object>{
 		else {
 			type_if = "else if";
 		}
-		System.out.println(String.format("\t%s %s {",type_if, conditions));
+		System.out.print(String.format("\t%s %s {\n\t",type_if, conditions));
 		return null; 
 	}
 	
 	@Override
 	public Object visitStart_else(SimpleParser.Start_elseContext ctx) {
-		System.out.println("\telse {");
+		System.out.print("\telse {\n\t");
 		
 		return null;
 	}
@@ -113,7 +113,7 @@ public class SimpleCustomVisitor extends SimpleBaseVisitor<Object>{
 		conditions = replace(conditions);
 		if(ctx.WHILE().getText().contentEquals("mientras")) {
 			
-			System.out.println(String.format("\twhile %s {", conditions));
+			System.out.print(String.format("\t\twhile %s {\n\t", conditions));
 		}
 		return null;
 	}
@@ -121,7 +121,7 @@ public class SimpleCustomVisitor extends SimpleBaseVisitor<Object>{
 
 	@Override
 	public Object visitEnd_wh(SimpleParser.End_whContext ctx) {
-		System.out.println("\t}");
+		System.out.println("\t\t}");
 		
 		return null;
 	}
@@ -131,7 +131,7 @@ public class SimpleCustomVisitor extends SimpleBaseVisitor<Object>{
 		String range = ctx.rango().getText();
 		range = replace(range);
 		
-		System.out.println(String.format("\tfor %s{",range));
+		System.out.print(String.format("\tfor %s{\n\t",range));
 		
 		return null;
 	}
